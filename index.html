@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revista Visão Tech | Acessibilidade Digital Universal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- ATALHO DE NAVEGAÇÃO RÁPIDA (Saltar para o conteúdo via TAB) -->
+    <a href="#conteudo-principal" class="link-atalho">Ir para o conteúdo principal [Pressione Enter]</a>
+
+    <!-- BARRA DE FERRAMENTAS DE ACESSIBILIDADE FIXA -->
+    <nav class="barra-acessibilidade" aria-label="Controles de Acessibilidade">
+        <button id="btnAumentaTexto" class="botao-controle" aria-label="Aumentar o tamanho do texto">A+ Aumentar</button>
+        <button id="btnDiminuiTexto" class="botao-controle" aria-label="Diminuir o tamanho do texto">A- Diminuir</button>
+        <button id="btnContraste" class="botao-controle" aria-label="Alternar para modo de alto contraste" aria-pressed="false">🌓 Alto Contraste</button>
+        
+        <!-- SELETOR DE FILTRO PARA DALTONISMO -->
+        <label for="seletorDaltonismo" class="sr-only">Selecione o filtro de daltonismo:</label>
+        <select id="seletorDaltonismo" class="botao-controle" aria-label="Simular visão com daltonismo">
+            <option value="nenhum">Visão Padrão</option>
+            <option value="deuteranopia">Deuteranopia (Verde)</option>
+            <option value="protanopia">Protanopia (Vermelho)</option>
+            <option value="tritanopia">Tritanopia (Azul)</option>
+        </select>
+
+        <button id="btnVoz" class="botao-controle botao-leitura" aria-label="Ouvir o conteúdo da revista em voz alta">🔊 Ouvir Revista</button>
+        <button class="botao-controle" onclick="pararLeitura()" aria-label="Parar a leitura em voz alta">⏹️ Parar</button>
+    </nav>
+
+    <!-- CABEÇALHO DA REVISTA -->
+    <header class="header-revista" role="banner">
+        <div class="logo-container">
+            <span class="edicao-tag">Edição Especial • Acessibilidade & Ciência Visível</span>
+            <h1>VISÃO <span>TECH</span></h1>
+            <p class="subtitulo">A ciência dos olhos, a física das cores e o futuro da tecnologia assistiva</p>
+        </div>
+    </header>
+
+    <!-- MENU DE NAVEGAÇÃO POR CATEGORIAS -->
+    <nav class="menu-categorias" aria-label="Categorias de artigos">
+        <ul>
+            <li><a href="#como-funciona">Funcionamento</a></li>
+            <li><a href="#problemas">Problemas Visuais</a></li>
+            <li><a href="#daltonismo">Daltonismo</a></li>
+            <li><a href="#solucoes">Soluções</a></li>
+            <li><a href="#tecnologia">Tecnologia & IA</a></li>
+            <li><button class="btn-emergencia" onclick="abrirModal()" aria-haspopup="dialog" aria-controls="modalAjuda">PRECISO DE AJUDA</button></li>
+        </ul>
+    </nav>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <main id="conteudo-principal" tabindex="-1">
+
+        <!-- ARTIGO DE CAPA -->
+        <section class="artigo-destaque" aria-labelledby="titulo-capa">
+            <div class="destaque-texto">
+                <span class="categoria-badge">Matéria de Capa</span>
+                <h2 id="titulo-capa">Como a Tecnologia está Devolvendo e Ampliando a Visão no Mundo</h2>
+                <p>A união entre Inteligência Artificial, Engenharia de Software, Robótica Médica e Padrões de Web Acessível está redefinindo o acesso à informação e a saúde ocular humana.</p>
+            </div>
+        </section>
+
+        <hr class="divisor" aria-hidden="true">
+
+        <!-- GRID DE ARTIGOS -->
+        <div class="artigos-grid">
+
+            <!-- ARTIGO 1: COMO FUNCIONA A VISÃO -->
+            <article id="como-funciona" class="card-artigo" tabindex="0">
+                <div class="card-tag">Anatomia</div>
+                <h3>1. Como Funciona a Visão Humana</h3>
+                <p>O olho humano capta estímulos luminosos de forma contínua:</p>
+                <ul>
+                    <li><strong>Córnea e Pupila:</strong> Controlam e focam a entrada da luz.</li>
+                    <li><strong>Retina:</strong> Camada posterior composta por fotorreceptores.
+                        <ul>
+                            <li><strong>Bastonetes:</strong> Responsáveis pela visão no escuro e percepção de movimento.</li>
+                            <li><strong>Cones:</strong> Responsáveis pela nitidez e identificação das cores (Vermelho, Verde e Azul).</li>
+                        </ul>
+                    </li>
+                    <li><strong>Nervo Óptico:</strong> Conduz os impulsos elétricos ao cérebro para formar a imagem.</li>
+                </ul>
+            </article>
+
+            <!-- ARTIGO 2: PROBLEMAS VISUAIS -->
+            <article id="problemas" class="card-artigo" tabindex="0">
+                <div class="card-tag">Diagnóstico</div>
+                <h3>2. Principais Problemas Visuais</h3>
+                <p>Erros de refração e alterações fisiológicas afetam o foco e a nitidez:</p>
+                <ul>
+                    <li><strong>Miopia:</strong> O foco se forma antes da retina (dificuldade para enxergar de longe).</li>
+                    <li><strong>Hipermetropia:</strong> O foco se forma atrás da retina (dificuldade para objetos próximos).</li>
+                    <li><strong>Astigmatismo:</strong> Curvatura irregular da córnea, gerando visão desfocada a qualquer distância.</li>
+                    <li><strong>Glaucoma e Catarata:</strong> Danos ao nervo óptico ou opacificação do cristalino.</li>
+                </ul>
+            </article>
+
+            <!-- ARTIGO 3: DALTONISMO -->
+            <article id="daltonismo" class="card-artigo destaque-daltonismo" tabindex="0">
+                <div class="card-tag">Genética & Cores</div>
+                <h3>3. Daltonismo: A Física das Cores e a Genética</h3>
+                <p>O daltonismo (discromatopsia) ocorre devido à alteração nos cones da retina:</p>
+                <ul>
+                    <li><strong>Deuteranopia:</strong> Incapacidade de identificar tons de <strong>verde</strong>.</li>
+                    <li><strong>Protanopia:</strong> Dificuldade na percepção da luz <strong>vermelha</strong>.</li>
+                    <li><strong>Tritanopia:</strong> Perda da sensibilidade a tons de <strong>azul e amarelo</strong>.</li>
+                    <li><strong>Acromatopsia:</strong> Visão exclusiva em escala de cinza.</li>
+                </ul>
+                <p><strong>Fato Genético:</strong> Como a mutação é ligada ao cromossomo X, afeta cerca de 8% dos homens e 0,5% das mulheres no mundo.</p>
+            </article>
+
+            <!-- ARTIGO 4: TRATAMENTOS -->
+            <article id="solucoes" class="card-artigo" tabindex="0">
+                <div class="card-tag">Tratamentos</div>
+                <h3>4. Tratamentos e Correções Oculares</h3>
+                <p>Para corrigir falhas de refração, utilizam-se lentes oftálmicas (óculos) ou lentes de contato. Cirurgias a laser (como LASIK) moldam a córnea, enquanto implantes intraoculares tratam a catarata com alta precisão.</p>
+            </article>
+
+            <!-- ARTIGO 5: TECNOLOGIA & IA -->
+            <article id="tecnologia" class="card-artigo destaque-tech" tabindex="0">
+                <div class="card-tag">Inovação</div>
+                <h3>5. Programação, Robótica, IA e Acessibilidade Digital</h3>
+                <p>Engenharia de software aplicada à saúde e inclusão social:</p>
+                <ul>
+                    <li><strong>Inteligência Artificial:</strong> Análise preditiva no mapeamento de retina.</li>
+                    <li><strong>Robótica Cirúrgica:</strong> Braços robóticos que auxiliam microcirurgias oculares.</li>
+                    <li><strong>Leitores de Tela (NVDA / TalkBack):</strong> Códigos com marcação ARIA e HTML semântico.</li>
+                    <li><strong>Padrões WCAG:</strong> Alto contraste e independência de cor para daltônicos.</li>
+                </ul>
+            </article>
+
+        </div>
+
+    </main>
+
+    <!-- MODAL POP-UP ACESSÍVEL (AVISO DE EMERGÊNCIA) -->
+    <div id="modalAjuda" class="modal-fundo" role="dialog" aria-modal="true" aria-labelledby="titulo-modal" hidden>
+        <section class="modal-conteudo">
+            <h2 id="titulo-modal">Cuidados Imediatos com a Saúde Ocular</h2>
+            <p>Se você sentir dores intensas, visão subitamente embaçada ou flashes luminosos:</p>
+            <ol>
+                <li><strong>Procure um serviço de emergência oftalmológica imediatamente.</strong></li>
+                <li><strong>Não esfregue, pressione ou lave o olho afetado sem orientação.</strong></li>
+                <li><strong>Não aplique colírios sem receita médica prévia.</strong></li>
+            </ol>
+            <button id="btnFecharModal" class="btn-fechar" onclick="fecharModal()" aria-label="Fechar janela de avisos de emergência">Fechar Aviso</button>
+        </section>
+    </div>
+
+    <!-- RODAPÉ SEMÂNTICO -->
+    <footer role="contentinfo">
+        <p><strong>Revista Digital Visão Tech</strong> • Projeto focado em Acessibilidade Digital Universal</p>
+        <p>Desenvolvido em conformidade com as diretrizes internacionais da <strong>WCAG 2.1 (Level AA)</strong>.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

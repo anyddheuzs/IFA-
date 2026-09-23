@@ -1,0 +1,282 @@
+/* ==========================================================================
+   1. VARIÁVEIS & ACESSIBILIDADE DE CORES
+   ========================================================================== */
+:root {
+    --bg-principal: #f8fafc;
+    --texto-principal: #0f172a;
+    --primaria: #0284c7;
+    --secundario: #4338ca;
+    --destaque-card: #e0f2fe;
+    --card-bg: #ffffff;
+    --modal-bg: #ffffff;
+    --borda-card: #0284c7;
+    --foco-visivel: #d97706; /* Indicador de foco visual via TAB */
+}
+
+/* MODO ALTO CONTRASTE */
+body.alto-contraste {
+    --bg-principal: #000000;
+    --texto-principal: #ffffff;
+    --primaria: #ffff00;
+    --secundario: #00ffff;
+    --destaque-card: #121212;
+    --card-bg: #000000;
+    --modal-bg: #000000;
+    --borda-card: #ffff00;
+    --foco-visivel: #00ff00;
+}
+
+/* FILTROS CSS SIMULADORES DE DALTONISMO */
+body.simular-deuteranopia { filter: grayscale(0.3) hue-rotate(180deg); }
+body.simular-protanopia { filter: grayscale(0.5) sepia(0.6); }
+body.simular-tritanopia { filter: hue-rotate(90deg); }
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background-color: var(--bg-principal);
+    color: var(--texto-principal);
+    padding-top: 60px;
+    line-height: 1.8;
+}
+
+/* INDICADOR DE FOCO VISÍVEL OBRIGATÓRIO PARA TECLADO */
+*:focus-visible {
+    outline: 4px solid var(--foco-visivel) !important;
+    outline-offset: 4px;
+}
+
+/* LINK ATALHO (SALTAR PARA O CONTEÚDO) */
+.link-atalho {
+    position: absolute;
+    top: -100px;
+    left: 10px;
+    background: #000000;
+    color: #ffffff;
+    padding: 12px 20px;
+    z-index: 3000;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #ffffff;
+    border-radius: 4px;
+}
+
+.link-atalho:focus {
+    top: 10px;
+}
+
+/* BARRA FIXA DE ACESSIBILIDADE */
+.barra-acessibilidade {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #0f172a;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    flex-wrap: wrap;
+    border-bottom: 2px solid var(--primaria);
+}
+
+.botao-controle {
+    background-color: #ffffff;
+    color: #0f172a;
+    border: 2px solid var(--secundario);
+    padding: 6px 14px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.botao-leitura {
+    background-color: #15803d;
+    color: #ffffff;
+    border: none;
+}
+
+/* CABEÇALHO & MENU */
+.header-revista {
+    text-align: center;
+    padding: 40px 20px 20px;
+}
+
+.edicao-tag {
+    display: inline-block;
+    background: var(--destaque-card);
+    color: var(--texto-principal);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    border: 1px solid var(--borda-card);
+}
+
+.header-revista h1 {
+    font-size: 2.5rem;
+    margin: 10px 0 5px;
+}
+
+.header-revista h1 span {
+    color: var(--primaria);
+}
+
+.subtitulo {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.menu-categorias ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin: 0;
+    flex-wrap: wrap;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--borda-card);
+    border-bottom: 1px solid var(--borda-card);
+}
+
+.menu-categorias a {
+    color: var(--texto-principal);
+    text-decoration: underline;
+    font-weight: bold;
+    padding: 6px 10px;
+}
+
+.btn-emergencia {
+    background-color: #b91c1c;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* LAYOUT PRINCIPAL */
+main {
+    max-width: 1050px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.artigo-destaque {
+    background-color: var(--destaque-card);
+    padding: 30px;
+    border-left: 8px solid var(--primaria);
+    border-radius: 8px;
+}
+
+.categoria-badge {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 800;
+    letter-spacing: 1px;
+    color: var(--primaria);
+}
+
+.divisor {
+    margin: 30px 0;
+    border: 0;
+    height: 2px;
+    background: var(--borda-card);
+}
+
+.artigos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+}
+
+.card-artigo {
+    background-color: var(--card-bg);
+    padding: 24px;
+    border-radius: 8px;
+    border: 2px solid var(--borda-card);
+    display: flex;
+    flex-direction: column;
+}
+
+.card-tag {
+    font-weight: bold;
+    font-size: 0.85rem;
+    color: var(--primaria);
+}
+
+.destaque-daltonismo,
+.destaque-tech {
+    grid-column: 1 / -1;
+    background-color: var(--destaque-card);
+}
+
+/* MODAL */
+.modal-fundo {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-fundo[hidden="false"] {
+    display: flex;
+}
+
+.modal-conteudo {
+    background-color: var(--modal-bg);
+    color: var(--texto-principal);
+    padding: 30px;
+    border-radius: 12px;
+    border: 4px dashed var(--primaria);
+    max-width: 90%;
+    width: 500px;
+}
+
+.btn-fechar {
+    background-color: var(--primaria);
+    color: #ffffff;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+footer {
+    background-color: #0f172a;
+    color: #ffffff;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    border-top: 4px solid var(--primaria);
+}
